@@ -34,20 +34,24 @@
 // In the second .then function you use, assign the third user object
 // to the variable 'thirdUser' (previously declared) and then return the tenth user object.
 
-var firstUser = 'don\'t touch this string!';
-var thirdUser = 'don\'t touch this string, either!';
+var firstUser = "don't touch this string!";
+var thirdUser = "don't touch this string, either!";
 
 function noWeakLink() {
-
-  return $http({
-    method: 'GET',
-    url: '/api/users'
-  })
-  // CODE HERE...
-
+  return (
+    $http({
+      method: "GET",
+      url: "/api/users"
+    })
+      // CODE HERE...
+      .then(res => {
+        firstUser = res[0];
+      })
+      .then(res => {
+        thirdUser = res[2];
+      })
+  );
 }
-
-
 
 // *************
 // * PROBLEM 2 *
@@ -67,15 +71,14 @@ function noWeakLink() {
 // 'My name is Horton and I am very heavy!' (The above instructions should make this work.  No code needed for this paragraph)
 
 var elephant = {
-  name: 'Horton'
-}
+  name: "Horton"
+};
 function large() {
-
-  return 'My name is ' + this.name + ' and I am very heavy!'
+  return "My name is " + this.name + " and I am very heavy!";
 }
 // CODE HERE...
 
-
+var boundToElephant = large.bind(elephant);
 
 // *************
 // * PROBLEM 3 *
@@ -89,7 +92,9 @@ function large() {
 
 // CODE HERE...
 
-
+function deathStar(capacity, crew) {
+  return (capacity = capacity.bind(crew));
+}
 
 // *************
 // * PROBLEM 4 *
@@ -104,7 +109,11 @@ function large() {
 
 // CODE HERE...
 
-
+function accountingOffice(assets) {
+  return function(liabilities) {
+    return assets + liabilities;
+  };
+}
 
 // *************
 // * PROBLEM 5 *
@@ -129,7 +138,14 @@ function large() {
 
 // CODE HERE...
 
-
+function forgetter(name) {
+  return function rememberall(item) {
+    return {
+      name: name,
+      remember: item
+    };
+  };
+}
 
 // *************
 // * PROBLEM 6 *
@@ -156,3 +172,58 @@ function large() {
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+
+function frodo(startingHungerValue, startingDangerValue) {
+  this.hunger = startingHungerValue;
+  this.danger = startingDangerValue;
+
+  // dinner method
+  this.dinnerOverFire = function() {
+    let newHunger = this.hunger - 25;
+    let newDanger = this.danger + 40;
+
+    if (newHunger < 0) {
+      newHunger = 0;
+    }
+
+    this.hunger = newHunger;
+    this.danger = newDanger;
+  };
+
+  // hiding method
+  this.hideInBush = function() {
+    let newHunger = this.hunger + 35;
+    let newDanger = this.danger - 20;
+
+    if (newDanger < 0) {
+      newDanger = 0;
+    }
+
+    this.hunger = newHunger;
+    this.danger = newDanger;
+  };
+}
+
+// function frodo(startingHungerValue, startingDangerValue) {
+//   var object = {
+//     hunger: startingHungerValue,
+//     danger: startingDangerValue
+//   };
+//   var func = {
+//     dinnerOverFire: function() {
+//       if (object.hunger >= 25 && object.danger <= 60) {
+//         object.hunger = object.hunger - 25;
+//         object.danger = object.danger + 40;
+//         return object;
+//       }
+//     },
+//     hidingInBush: function() {
+//       if (object.hunger <= 65 && object.danger >= 20) {
+//         object.hunger = object.hunger + 35;
+//         object.danger = object.danger - 20;
+//         return object;
+//       }
+//     }
+//   };
+// }
+// console.log(frodo.func["dinnerOverFire"](hungry1, inDanger2));

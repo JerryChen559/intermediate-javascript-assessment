@@ -7,20 +7,20 @@
 
 // Given the following nested functions:
 
-function daBears(){
+function daBears() {
   var isFurry = true;
 
-  function papaBear (){
+  function papaBear() {
     var porridge = "Too Hot!";
     var chair = "Too Big!";
     var bed = "Too Hard!";
     var feeling = "Angry";
 
-    function mamaBear(){
+    function mamaBear() {
       var porridge = "Too Cold!";
       var bed = "Too Soft!";
 
-      function babyBear(){
+      function babyBear() {
         var porridge = "Just right!";
         var chair = "Just right!";
         var bed = "Just right!";
@@ -30,7 +30,7 @@ function daBears(){
     }
   }
 
-  function goldilocks(){
+  function goldilocks() {
     var feeling = "Hungry";
     var isFurry = false;
     var isDinner = true;
@@ -45,26 +45,55 @@ function daBears(){
 
 var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
+function isChairTooBig(arr) {
+  let arr2 = arr.filter(e => e.chair == "Too Big!");
+  return arr2;
+}
+// isTooBig(fairyTale1);
+
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
 var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+
+function isFeelingHungry(arr) {
+  let arr2 = arr.filter(e => e.feeling == "Hungry");
+  return arr2;
+}
+isFeelingHungry(fairyTale2);
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
 var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
+function isPorridgeTooCold(arr) {
+  let arr2 = arr.filter(e => e.porridge == "Too Cold!");
+  return arr2;
+}
+isPorridgeTooCold(fairyTale3);
+
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
 var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+
+function filterSleepy(arr) {
+  let arr2 = arr.filter(e => e.sleepy == "Very yes");
+  return arr2;
+}
+filterSleepy(fairyTale4);
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
 var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
+function filterFurry(arr) {
+  let arr2 = arr.filter(e => e.isFurry);
+  return arr2;
+}
+filterFurry(fairyTale5);
 
 // *************
 // * PROBLEM 2 *
@@ -83,16 +112,24 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+function Vehicle(gasRemaining) {
+  this.gasRemaining = 100;
+}
 
-
-
+Vehicle.prototype.drive = function() {
+  return (this.gasRemaining -= 25);
+};
+const charger = new Vehicle();
+charger.drive();
+const mustang = new Vehicle();
+mustang.drive();
+mustang.drive();
 
 // -----------------------------------------------------------------------------
 
 // *************
 // * PROBLEM 3 *
 // *************
-
 
 // For this problem, you will need to add a method to the String prototype named
 // "grammarPolice".  When called on a string, "grammarPolice" will return a new string
@@ -104,12 +141,24 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Your method may be passed punctuation, numbers or other non-letter characters
 // and should neither modify them nor break when encountering them.
 
-
-
-
 // CODE HERE...
 
+// String.prototype.grammarPolice = function(word) {
+//   word.toLowerCase();
+//   return this.charAt(0).toUpperCase() + this.slice(1);
+// };
 
+String.prototype.grammarPolice = function(word) {
+  var arr1 = this.split(" ");
+  var arr2 = [];
+
+  for (var i = 0; i < arr1.length; i++) {
+    arr2.push(arr1[i].charAt(0).toUpperCase() + arr1[i].slice(1).toLowerCase());
+  }
+  return arr2.join(" ");
+};
+
+// -----------------------------------------------------------------------------
 
 // *************
 // * PROBLEM 4 *
@@ -127,7 +176,16 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
+function valueType(one, two) {
+  if (one === two) {
+    return "Exactly the same";
+  }
+  if (one == two) {
+    return "Same value, different types";
+  }
+}
 
+// -----------------------------------------------------------------------------
 
 // *************
 // * PROBLEM 5 *
@@ -141,3 +199,7 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 var theAnswer = "Unknown";
 
 // CODE HERE...
+function promiseCatcher(one) {
+  let Answer2 = one;
+  let theAnswer = Answer2;
+}

@@ -13,8 +13,12 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
-
+function callBinding(magicAnimals, updateAnimal, id) {
+  //find matching id
+  // .then
+  // ( update(){
+  // })
+}
 
 // *************
 // * PROBLEM 2 *
@@ -28,8 +32,7 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
-
+function applyBinding(magicAnimals, updateAnimal, id) {}
 
 // *************
 // * PROBLEM 3 *
@@ -49,7 +52,8 @@ var foo;
 
 // CODE HERE...
 
-
+// Angular
+// function promiseMe($q) {}
 
 // *************
 // * PROBLEM 4 *
@@ -64,3 +68,6 @@ var foo;
 // and then resolve the array as you complete your promise.
 
 // CODE HERE...
+
+// Angular
+// function promiseMe($q, $http) {}
